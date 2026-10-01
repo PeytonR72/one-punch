@@ -1,6 +1,8 @@
 # One Punch
 
-A one-shot prompt arena: players bring their own model, type a prompt (max 500 characters) on our interface, and the model one-shots an artifact (website or game). Artifacts are pitted against other players' one-shots and voted on.
+A one-shot prompt arena: players bring their own model, type a prompt (max 1000 characters) on our interface, and the model one-shots an artifact (website or game). Artifacts are pitted against other players' one-shots and voted on.
+
+Design decisions (settled and still open) live in `docs/DECISIONS.md`. Read it before building anything.
 
 ## Working rules
 
