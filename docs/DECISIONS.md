@@ -37,9 +37,15 @@ Running log from the design grilling sessions. "Settled" items are agreed with t
 28. **Generation UX:** code streams live with a token/cost meter; the rendered preview is revealed when the build finishes (no live half-built preview).
 29. **Visual style:** fighting-game arcade energy, restrained — VS splash before votes, KO/"ONE PUNCH!" moments on results, bold display type, dark-first; quiet chrome around artifacts. Avoid anything resembling the *One-Punch Man* anime (characters, logo style).
 
+30. **Sandbox & CDN allowlist:** artifacts run in a sandboxed iframe (`allow-scripts`, no `allow-same-origin`) on the separate user-content domain. CSP allows inline code plus a curated list of ~10 exact, version-pinned library URLs on jsDelivr (e.g. three.js, p5, Phaser, Tailwind, GSAP, Tone.js, Matter.js). The list is published in the public system prompt. Everything else is blocked, including fetch/XHR/WebSocket.
+31. **Preview thumbnails:** after a build finishes, a headless Chromium job loads it in the sandbox, waits ~3s, and stores a PNG in Supabase Storage. The author can re-take the thumbnail at a chosen moment from the preview before submitting.
+32. **Matchmaking:** prefer the entries with the fewest votes, pair each with a similarly rated opponent from the same challenge + league, never show voters their own entry or a pair they've already judged.
+33. **Seasons:** quarterly (12 weeks, ~12 challenges). Points per challenge by placement: 1st 100, 2nd 75, 3rd 60, top 10% 40, top 25% 25, top 50% 10, entered 5. A player's best 8 results count.
+34. **Vote-quality guards (MVP):** vote buttons unlock only after both artifacts have been on screen ~8s (or the voter interacted with each); daily cap of ~100 votes per user plus rate limiting. No new-account weighting and no exclusion from your own challenge for now; revisit if abuse shows up.
+
 ## Open
 
-- Round 5: artifact sandbox & CDN allowlist, preview thumbnails, matchmaking rules, season length & points, vote-quality guards. Then a final confirmation pass before writing the spec.
+- Final confirmation pass before writing the spec.
 
 Vercel facts (2026-10): team "peytonr7272-gmailcom's projects". Vercel's Hobby plan is for non-commercial use, so a Pro upgrade is needed before taking payments. Function `maxDuration` can go up to 1800s on paid plans with Fluid compute; Hobby is much lower.
 
