@@ -23,9 +23,17 @@ Running log from the design grilling sessions. "Settled" items are agreed with t
 16. **Private build history** kept (prompt, model, HTML, cost); reopen/submit/delete any time.
 17. **Moderation:** report button, auto-hide after N distinct reports, admin review queue. No auto-classifier at launch.
 
+18. **Free trial:** each new account gets one free Sonnet 5.5 build. Abuse control = one per account + a global daily spend cap on free builds (~$10/day; "free builds are out for today" when hit). Add GitHub-account-age or phone checks only if abuse appears. Free builds can enter the ranked Sonnet 5.5 league.
+19. **Paid plan (credits):** monthly subscription buys credits; cost per build scales with model (Sonnet 1, Opus 2, Fable 5). Starting point ~$10–12/mo for 25 credits; credits expire monthly. Stripe Checkout + Customer Portal. One-off top-up packs later.
+20. **Hosted builds go through Vercel AI Gateway** (one key, many providers, billed via Vercel). BYOK users keep OpenRouter OAuth + direct provider keys. AI Gateway also accepts per-request BYOK credentials (`providerOptions.gateway.byok`), so one AI SDK code path can serve both.
+21. **BYOK is free forever.** The paid plan is convenience, not a toll.
+22. **Launch order:** MVP ships with free builds (no payments). Payments are implemented before the site is considered complete.
+23. **Launch model menu:** ~5–6 curated models (Claude Sonnet 5.5, Claude Opus 5.5, top GPT and Gemini frontier + mid-tier). Exact IDs verified against the gateway at build time. A model's ranked league opens only once it has enough entries; until then those entries compete in the Open league.
+
 ## Open
 
-- **Monetization (new idea, round 3):** one free Sonnet 5.5 build for a new user's first build, then BYOK or a monthly paid plan to use models through us. Sub-questions: trial abuse limits, plan shape (credits vs flat builds), which provider gateway we use for hosted builds, whether BYOK stays free, whether paid ships in MVP, payments provider.
-- Later: MVP scope & launch order, who writes challenge briefs, Vercel function time limits for long generations, profiles & sharing, visual style.
+- Round 4: exact MVP feature list (is BYOK in MVP?), generation runtime vs Vercel limits & plan, challenge briefs, profiles & sharing, live generation UX, visual style.
+
+Vercel facts (2026-10): team "peytonr7272-gmailcom's projects". Vercel's Hobby plan is for non-commercial use, so a Pro upgrade is needed before taking payments. Function `maxDuration` can go up to 1800s on paid plans with Fluid compute; Hobby is much lower.
 
 Reference cost (Anthropic list prices, 2026-09): Sonnet 5.5 $2/$10 per MTok in/out; Opus 5.5 $4/$20; Fable 5.1 $10/$50. A one-shot of ~3k input + 20–30k output (thinking counts as output) ≈ $0.20–0.35 on Sonnet 5.5, ≈ $0.40–0.65 on Opus 5.5, ≈ $1.00–1.50 on Fable 5.1.
