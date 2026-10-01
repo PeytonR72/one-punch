@@ -14,6 +14,18 @@ Running log from the design grilling sessions. "Settled" items are agreed with t
 8. **Accounts required** to submit and to vote (GitHub + Google sign-in). Author/model hidden until after a vote.
 9. **Stack:** Next.js (App Router, TypeScript) on Vercel; Supabase (Postgres, Auth, Storage). Artifacts served from a separate user-content domain in a sandboxed iframe. Supabase org currently has 7 projects, all paused, so a new free-tier project fits under the 2-active-project limit.
 
+10. **Voting:** blind pairwise A/B (same challenge + league), options A / B / tie / both bad. Glicko-2 ratings.
+11. **Leaderboards:** entries (per challenge + league), players (season points from placements), models (from Open league).
+12. **Challenges:** weekly. Submissions open 7 days; voting runs during and 3 days after; then standings freeze. One entry per user per challenge per league, swappable until submissions close.
+13. **Credentials:** stored encrypted at rest server-side, user can disconnect any time. (May shift with the hosted-plan idea — see Open.)
+14. **Model params fixed for ranked:** provider default temperature, ~32k max output, model's default reasoning. System prompt is public.
+15. **Prompts hidden during an active challenge**, public after it closes.
+16. **Private build history** kept (prompt, model, HTML, cost); reopen/submit/delete any time.
+17. **Moderation:** report button, auto-hide after N distinct reports, admin review queue. No auto-classifier at launch.
+
 ## Open
 
-See latest grilling round: voting mechanic & ratings, what gets ranked, challenge cadence, credential storage, generation runtime/timeouts, system prompt & model params, prompt visibility, moderation, private build history, MVP scope.
+- **Monetization (new idea, round 3):** one free Sonnet 5.5 build for a new user's first build, then BYOK or a monthly paid plan to use models through us. Sub-questions: trial abuse limits, plan shape (credits vs flat builds), which provider gateway we use for hosted builds, whether BYOK stays free, whether paid ships in MVP, payments provider.
+- Later: MVP scope & launch order, who writes challenge briefs, Vercel function time limits for long generations, profiles & sharing, visual style.
+
+Reference cost (Anthropic list prices, 2026-09): Sonnet 5.5 $2/$10 per MTok in/out; Opus 5.5 $4/$20; Fable 5.1 $10/$50. A one-shot of ~3k input + 20–30k output (thinking counts as output) ≈ $0.20–0.35 on Sonnet 5.5, ≈ $0.40–0.65 on Opus 5.5, ≈ $1.00–1.50 on Fable 5.1.
