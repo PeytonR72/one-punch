@@ -30,9 +30,16 @@ Running log from the design grilling sessions. "Settled" items are agreed with t
 22. **Launch order:** MVP ships with free builds (no payments). Payments are implemented before the site is considered complete.
 23. **Launch model menu:** ~5–6 curated models (Claude Sonnet 5.5, Claude Opus 5.5, top GPT and Gemini frontier + mid-tier). Exact IDs verified against the gateway at build time. A model's ranked league opens only once it has enough entries; until then those entries compete in the Open league.
 
+24. **MVP scope:** GitHub/Google sign-in; build page (1000-char prompt, model picker, preview); one free Sonnet 5.5 build **plus BYOK** (OpenRouter OAuth + direct keys); private build history with submit/scrap; weekly challenges (Games, Websites) across Open + per-model leagues; blind A/B voting with Glicko-2; entry/player/model leaderboards; reports + admin queue + admin page for scheduling challenges. **After MVP:** payments/credits, freeform arena, top-up packs, Toys category.
+25. **Generations run as background jobs** that persist streamed progress to the DB; users can close the tab and return; dropped connections lose nothing. Move to Vercel Pro before public launch.
+26. **Challenge briefs are admin-written** (the user), queued in the admin page. Claude drafts a starter backlog (~8 per category) for the user to edit. Community suggestions/voting later.
+27. **Profiles & sharing:** public profiles (handle, entries, season points, best placings). Each entry has a shareable page (preview image, full-screen play, "vote in this challenge" → blind arena). Prompt hidden until the challenge closes; arena votes stay blind.
+28. **Generation UX:** code streams live with a token/cost meter; the rendered preview is revealed when the build finishes (no live half-built preview).
+29. **Visual style:** fighting-game arcade energy, restrained — VS splash before votes, KO/"ONE PUNCH!" moments on results, bold display type, dark-first; quiet chrome around artifacts. Avoid anything resembling the *One-Punch Man* anime (characters, logo style).
+
 ## Open
 
-- Round 4: exact MVP feature list (is BYOK in MVP?), generation runtime vs Vercel limits & plan, challenge briefs, profiles & sharing, live generation UX, visual style.
+- Round 5: artifact sandbox & CDN allowlist, preview thumbnails, matchmaking rules, season length & points, vote-quality guards. Then a final confirmation pass before writing the spec.
 
 Vercel facts (2026-10): team "peytonr7272-gmailcom's projects". Vercel's Hobby plan is for non-commercial use, so a Pro upgrade is needed before taking payments. Function `maxDuration` can go up to 1800s on paid plans with Fluid compute; Hobby is much lower.
 
